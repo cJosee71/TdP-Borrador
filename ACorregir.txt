@@ -1,0 +1,31 @@
+Errores de paquete y sintaxis:
+- Paquete Logica en mayúscula: 22 archivos usan package Logica... o import Logica... en lugar de logica. Pasa en Link, EntidadAnimada, AdministradorColisiones, Juego, los Hilo*, ControlJugador y los Comportamiento*, entre otros.
+- Link.java: tiene un espacio no separable (\u00a0) en la línea 5.
+- Sin package: FabricaSpritesOriginal, FabricaSpritesAlternativa, Ranking, EntradaRanking y PersistenciaRanking.
+- GUI.java:57: Fabrica Sprites tiene un espacio de más.
+
+Imports faltantes:
+- FabricaEntidades no importa las entidades.
+- Sector no importa AdministradorColisiones.
+- EntidadAnimada no importa List.
+- GeneradorNivel no importa nada de lo que usa.
+- PersistenciaRanking no importa java.io.
+- AnimadorTransicion y ControladorDeVistas también tienen imports sin completar.
+
+Errores de código:
+- Posicion: no tiene direccionHacia(Posicion), que el diagramareccionHaciaJugador() usa.
+- Contrarreloj: llama a agregarAlRankingContrareloj, pero en Juego el método se llama agregarAlRankingContrarreloj.
+- PanelPantallaNivel: no tiene extends PanelVista. Declara etiivel, que el diagrama sí tiene.
+- GUI:
+  - Los atributos se llaman paneNivel, panePrincipal y paneRanlNivel, panelPrincipal y panelRanking.
+  - No implementa mostrarJugador.
+  - Le faltan mostrarEntidad y mostrarPantallaPrincipal.
+  - setControladorJuego no coincide con la interfaz.
+  - Tampoco es un ControladorDeVistas.
+
+Recursos en el lugar equivocado: el código busca /niveles/nivelN.txt, pero los archivos están en src/Recursos/Niveles/.
+
+Otras diferencias con el extendido (no bloquean)
+
+- Clasico, Contrarreloj y NoHit: tienen métodos que el diagrama no dibuja (alIniciarNivel, alPasarTiempo, alRecibirDanio, esUltimoNivel).
+- CeldaGrafica y CeldaJugador: atributos de más.
